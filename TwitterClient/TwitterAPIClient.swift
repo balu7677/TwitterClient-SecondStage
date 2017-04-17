@@ -19,6 +19,10 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
     func homeTimeline(success: @escaping (([Tweet]) -> ()), failure:@escaping ((Error) -> ())){
         get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let dictionaries = response as! [NSDictionary]
+            for dict in dictionaries {
+                print(dict)
+                print("**********")
+            }
             let tweets = Tweet.tweetsArray(dictionaries: response as! [NSDictionary])
             success(tweets)
         }, failure: { (task: URLSessionDataTask?, error: Error) in
@@ -38,6 +42,36 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
         })
 
     }
+    
+    func postTweet(status: NSDictionary, success:@escaping ((Any?)->()), failure:@escaping ((Error)->())){
+        post("https://api.twitter.com/1.1/statuses/update.json", parameters: status, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success(response)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+            print(error.localizedDescription)
+        })
+    }
+    
+    func retweet(id: String, success:@escaping (()->()), failure: @escaping ((Error)->())){
+        let postUrl = "https://api.twitter.com/1.1/statuses/retweet/\(id).json"
+        post(postUrl, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+            print(error.localizedDescription)
+        })
+    }
+    
+    func favorite(id: String, success:@escaping (()->()), failure: @escaping ((Error)->())){
+        let postUrl = "https://api.twitter.com/1.1/favorites/create.json?id=\(id)"
+        post(postUrl, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+            print(error.localizedDescription)
+        })
+    }
+
     
     func login (success:@escaping (()->()), failure:@escaping ((Error)->())) {
         
@@ -64,7 +98,7 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
         fetchAccessToken(withPath: "https://api.twitter.com/oauth/access_token", method: "POST", requestToken: request, success: { (accessToken: BDBOAuth1Credential?) in
             self.verifyCredentials(success: { (user: User) in
                 self.loginSuccess?()
-                User._currentUser = user
+                User.currentUser = user
             }, failure: { (error:Error) in
                 self.loginfailure!(error)
             })
@@ -75,6 +109,12 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
             print(error?.localizedDescription)
             self.loginfailure!(error!)
         })
+    }
+    
+    func logout(){
+        deauthorize()
+        User.currentUser = nil
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserLoggedOut"), object: nil)
     }
 
 }

@@ -44,20 +44,18 @@ class User: NSObject {
         }
         set(user){
             
-        
-        print("**********SAVING")
+        _currentUser = user
         let defaults = UserDefaults.standard
             if let user = user {
                 
                 let data = try! JSONSerialization.data(withJSONObject: user.userDictionary!, options: [])
                 defaults.set(data, forKey: "currentUserData")
-                print("**********SAVING********")
             } else {
-                print("**********SAVING****NILLLL****")
-                defaults.set(nil, forKey: "currentUserData")
+                //defaults.set(nil, forKey: "currentUserData")
+                defaults.removeObject(forKey: "currentUserData")
             }
             defaults.synchronize()
-            _currentUser = user
+            
             }
         }
     }

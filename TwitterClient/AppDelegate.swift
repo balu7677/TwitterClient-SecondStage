@@ -17,11 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if User._currentUser != nil {
+        if User.currentUser != nil {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let viewControl = storyBoard.instantiateViewController(withIdentifier: "MainTweetsNavigationController")
             
             window?.rootViewController = viewControl
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserLoggedOut"), object: nil, queue: OperationQueue.main) { (Notification) in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let viewControl = storyBoard.instantiateInitialViewController()
+            
+            self.window?.rootViewController = viewControl
         }
         return true
     }
