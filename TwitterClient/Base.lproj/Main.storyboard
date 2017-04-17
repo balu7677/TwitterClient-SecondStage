@@ -112,26 +112,23 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fx-7R-c5v">
-                                <rect key="frame" x="15" y="285" width="41" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Reply"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fx-7R-c5v">
+                                <rect key="frame" x="15" y="285" width="25" height="32"/>
+                                <state key="normal" image="reply-action_0"/>
                                 <connections>
                                     <segue destination="wGj-SO-OB0" kind="presentation" id="5Ef-6P-2Xh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-Md-lq2">
-                                <rect key="frame" x="106" y="285" width="60" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Retweet"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-Md-lq2">
+                                <rect key="frame" x="90" y="285" width="28" height="33"/>
+                                <state key="normal" image="retweet-action"/>
                                 <connections>
                                     <action selector="onTapRetweet:" destination="Soi-7c-ywM" eventType="touchUpInside" id="fSj-QY-AfD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqg-Cg-Or2">
-                                <rect key="frame" x="212" y="285" width="58" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Favorite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqg-Cg-Or2">
+                                <rect key="frame" x="164" y="285" width="25" height="33"/>
+                                <state key="normal" image="like-action"/>
                                 <connections>
                                     <action selector="onTapFavorite:" destination="Soi-7c-ywM" eventType="touchUpInside" id="qE7-Dd-0Cs"/>
                                 </connections>
@@ -184,7 +181,10 @@
                         <outlet property="favoritesConstant" destination="TUc-yU-W0R" id="zah-KN-ET1"/>
                         <outlet property="favoritesLabel" destination="GKt-ht-f1j" id="7S7-jT-X0l"/>
                         <outlet property="imageProfile" destination="CPP-Ge-d8k" id="wGT-uI-ncM"/>
+                        <outlet property="likeButton" destination="Cqg-Cg-Or2" id="6vo-9d-P0H"/>
                         <outlet property="nameLabel" destination="MsW-d4-qaR" id="ANm-6W-vg0"/>
+                        <outlet property="replyButton" destination="2fx-7R-c5v" id="AA2-Km-tgo"/>
+                        <outlet property="retweetButton" destination="qbC-Md-lq2" id="4oT-90-P5G"/>
                         <outlet property="retweetsConstant" destination="PCe-ms-7jS" id="Vv4-ZK-Fzf"/>
                         <outlet property="retweetsLabel" destination="aqC-eY-pCi" id="1XD-KQ-iky"/>
                         <outlet property="screenName" destination="qbZ-9Q-EOa" id="RlR-co-nri"/>
@@ -317,11 +317,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="kWw-kK-Van">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="wZs-JJ-aq9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onLogout:" destination="WwD-kC-pW3" id="rU4-f2-DL7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="5Mo-3V-Pi8">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="wGj-SO-OB0" kind="presentation" id="qOP-lE-6Ak"/>
                             </connections>
@@ -391,12 +393,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="New" id="9ej-Bi-dgN">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="adm-gT-06O">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onCancel:" destination="I70-Ib-c95" id="JxR-sF-jcO"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Post" id="fIx-zQ-jCT">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="onPostTweet:" destination="I70-Ib-c95" id="OG4-zA-z3g"/>
                                 </connections>
@@ -410,11 +414,11 @@
                                             <rect key="frame" x="38" y="8" width="26" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    <color key="backgroundColor" red="0.29712780329999999" green="0.72694843819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -436,9 +440,13 @@
             <objects>
                 <navigationController storyboardIdentifier="MainTweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ZJJ-Wi-FJD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P6I-Bl-itR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P6I-Bl-itR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.29712780329999999" green="0.72694843819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -454,9 +462,10 @@
             <objects>
                 <navigationController storyboardIdentifier="PostNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="wGj-SO-OB0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q9n-gd-QMs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q9n-gd-QMs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.29712780329999999" green="0.72694843819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -468,6 +477,11 @@
             <point key="canvasLocation" x="2565.5999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="like-action" width="25" height="33"/>
+        <image name="reply-action_0" width="25" height="28"/>
+        <image name="retweet-action" width="28" height="27"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5Ef-6P-2Xh"/>
     </inferredMetricsTieBreakers>

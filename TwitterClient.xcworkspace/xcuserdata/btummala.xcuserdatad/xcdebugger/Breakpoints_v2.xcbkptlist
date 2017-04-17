@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TwitterClient/TwitterAPIClient.swift"
-            timestampString = "514072807.976733"
+            timestampString = "514094617.473645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "handleOpenUrl(url:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,13 +440,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TwitterClient/DetailTweetViewController.swift"
-            timestampString = "514033668.842726"
+            timestampString = "514089464.159859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TwitterClient.DetailTweetViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "TwitterClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btummala/Documents/Codepath/TwitterClient/TwitterClient/DetailTweetViewController.swift"
+                  timestampString = "514096348.672397"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "414">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TwitterClient.DetailTweetViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "TwitterClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btummala/Documents/Codepath/TwitterClient/TwitterClient/DetailTweetViewController.swift"
+                  timestampString = "514096348.673721"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "6798">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -552,11 +584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TwitterClient/Tweet.swift"
-            timestampString = "514072573.584104"
+            timestampString = "514096702.385408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "init(dictionary:)"
             landmarkType = "7">
             <Locations>
@@ -687,6 +719,101 @@
                   offsetFromSymbolStart = "992">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TwitterClient/DetailTweetViewController.swift"
+            timestampString = "514096938.82293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TwitterClient/DetailTweetViewController.swift"
+            timestampString = "514096938.82293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TwitterClient.DetailTweetViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "TwitterClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btummala/Documents/Codepath/TwitterClient/TwitterClient/DetailTweetViewController.swift"
+                  timestampString = "514095018.782592"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "6175">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TwitterClient.DetailTweetViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "TwitterClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btummala/Documents/Codepath/TwitterClient/TwitterClient/DetailTweetViewController.swift"
+                  timestampString = "514095018.783846"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "6931">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TwitterClient.DetailTweetViewController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "TwitterClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btummala/Documents/Codepath/TwitterClient/TwitterClient/DetailTweetViewController.swift"
+                  timestampString = "514095018.785035"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TwitterClient/DetailTweetViewController.swift"
+            timestampString = "514096938.82293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

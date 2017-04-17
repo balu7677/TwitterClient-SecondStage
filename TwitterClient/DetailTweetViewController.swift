@@ -11,6 +11,9 @@ import UIKit
 class DetailTweetViewController: UIViewController {
     
     
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var retweetsLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tweetText: UILabel!
@@ -36,7 +39,26 @@ class DetailTweetViewController: UIViewController {
         var formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, yyyy 'at' h:mm aaa"
         self.dateLabel.text = formatter.string(from: (self.tweet?.timestamp)!)
-        
+        if(tweet?.retweeted)!{
+           self.retweetButton.setImage(UIImage(named: "retweet-action-on"), for: UIControlState.normal)
+        }
+        if(tweet?.favorited)!{
+            self.likeButton.setImage(UIImage(named: "like-action-on"), for: UIControlState.normal)
+        }
+//        
+//        TwitterAPIClient.sharedInstance?.myRetweets(tweetId: (tweet?.tweetId)!, success: { (response: Any?) in
+//            let retweetDict = response as? [NSDictionary]
+//            for dict in retweetDict! {
+//                if let retweetId = dict["id_str"] as? String {
+//                    if(retweetId == self.tweet?.tweetId){
+//                        self.retweetButton.setImage(UIImage(named: "retweet-action-on"), for: UIControlState.normal)
+//                    }
+//                }
+//            }
+//            
+//        }, failure: {
+//            print("Not retweeted by me")
+//        })
 
         // Do any additional setup after loading the view.
     }
@@ -50,6 +72,10 @@ class DetailTweetViewController: UIViewController {
         let strId = tweet?.tweetId
         TwitterAPIClient.sharedInstance?.favorite(id: strId!, success: {
             print("Success Liked")
+           self.likeButton.setImage(UIImage(named: "like-action-on"), for: UIControlState.normal)
+            if(!((self.tweet?.favorited)!)){
+            let count = (self.tweet?.favoritesCount)! + 1
+                self.favoritesLabel.text = "\(count)" }
         }, failure: { (error: Error) in
             print("Failed retweet: \(error.localizedDescription)")
         })
@@ -59,6 +85,13 @@ class DetailTweetViewController: UIViewController {
         let strId = tweet?.tweetId
         TwitterAPIClient.sharedInstance?.retweet(id: strId!, success: {
             print("Success Retweeted")
+            self.retweetButton.setImage(UIImage(named: "retweet-action-on"), for: UIControlState.normal)
+            if(!((self.tweet?.retweeted)!)){
+                let count = (self.tweet?.retweetCount)! + 1
+                self.retweetsLabel.text = "\(count)" }
+            TwitterAPIClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
+            }, failure: { (error: Error) in
+            })
         }, failure: { (error: Error) in
             print("Failed retweet: \(error.localizedDescription)")
         })

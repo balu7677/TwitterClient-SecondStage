@@ -71,6 +71,15 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
             print(error.localizedDescription)
         })
     }
+    
+    func myRetweets(tweetId: String, success:@escaping ((Any?)->()), failure:@escaping (()->())){
+        get("https://api.twitter.com/1.1/statuses/retweets_of_me.json?max_id=\(tweetId)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success(response)
+        }, failure: { (task: URLSessionDataTask?,error: Error) in
+            failure()
+            print(error.localizedDescription)
+        })
+    }
 
     
     func login (success:@escaping (()->()), failure:@escaping ((Error)->())) {
