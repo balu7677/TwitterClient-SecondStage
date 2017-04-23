@@ -33,6 +33,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         viewcontrollers.append(profileViewController)
         viewcontrollers.append(mentionsViewController)
         
+        hamburgerViewController.contentViewController = homeViewController
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +43,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return titles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,10 +53,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        //self.tableView.deselectRow(at: indexPath, animated: true)
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
         hamburgerViewController.contentViewController = viewcontrollers[indexPath.row]
-        print("\(indexPath.row)******\(indexPath.section)")
+        //print("\(indexPath.row)******\(indexPath.section)")
     }
     
     

@@ -19,16 +19,31 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
     func homeTimeline(success: @escaping (([Tweet]) -> ()), failure:@escaping ((Error) -> ())){
         get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let dictionaries = response as! [NSDictionary]
-            for dict in dictionaries {
-                print(dict)
-                print("**********")
-            }
+//            for dict in dictionaries {
+//               // print(dict)
+//               // print("**********")
+//            }
             let tweets = Tweet.tweetsArray(dictionaries: response as! [NSDictionary])
             success(tweets)
         }, failure: { (task: URLSessionDataTask?, error: Error) in
             failure(error)
         })
     }
+    
+    func userHomeTimeLine(userNameinUrl:String, success: @escaping (([Tweet]) -> ()), failure:@escaping ((Error) -> ())){
+        get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(userNameinUrl)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            let dictionaries = response as! [NSDictionary]
+//            for dict in dictionaries {
+//                // print(dict)
+//                // print("**********")
+//            }
+            let tweets = Tweet.tweetsArray(dictionaries: response as! [NSDictionary])
+            success(tweets)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
+
     
     func verifyCredentials(success:@escaping ((User)->()), failure:@escaping ((Error)->())){
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in

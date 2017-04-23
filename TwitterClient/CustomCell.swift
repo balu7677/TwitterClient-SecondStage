@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol CustomCellDelegate {
+    func CustomCellDelegate(number:Int)
+}
+
 class CustomCell: UITableViewCell {
 
     
@@ -16,7 +20,8 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
-    
+    var delegate: CustomCellDelegate!
+    var rowNum: Int!
     var tweet: Tweet?{
         didSet{
             self.nameLabel.text = tweet?.user?.name
@@ -32,7 +37,13 @@ class CustomCell: UITableViewCell {
         super.awakeFromNib()
         self.profileImage.layer.cornerRadius = 5.0
         self.profileImage.layer.masksToBounds = true
+        let tap = UITapGestureRecognizer(target: self,action:#selector(onTap))
+        self.profileImage.addGestureRecognizer(tap)
         // Initialization code
+    }
+    
+    func onTap(_ sender:Any){
+        delegate?.CustomCellDelegate(number: rowNum)
     }
     
     override func layoutSubviews() {

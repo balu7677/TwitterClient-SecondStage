@@ -21,14 +21,32 @@ class HamburgerViewController: UIViewController {
         }
     }
     var contentViewController: UIViewController! {
-        didSet{
+        didSet(oldViewController){
+            if(oldViewController != nil){
+                oldViewController.willMove(toParentViewController: nil)
+                oldViewController.view.removeFromSuperview()
+                oldViewController.didMove(toParentViewController: nil)
+            }
             self.view.layoutIfNeeded()
+            contentViewController.willMove(toParentViewController: self)
             contentView.addSubview(contentViewController.view)
+            contentViewController.didMove(toParentViewController: self)
+            UIView.animate(withDuration: 0.3) { 
+                self.contentLeftMargin.constant = 0
+                self.view.layoutIfNeeded()
+            }
         }
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("In Hamburger")
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let navigationControl = storyBoard.instantiateViewController(withIdentifier: "HamburgerNavigationController") as! UINavigationController
+//        //let viewControl = navigationControl.topViewController as! HamburgerViewController
+        let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menuViewController.hamburgerViewController = self
+        self.menuViewController = menuViewController
 
         // Do any additional setup after loading the view.
     }

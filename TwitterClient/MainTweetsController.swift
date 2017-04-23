@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, CustomCellDelegate {
     
     
     @IBAction func onLogout(_ sender: Any) {
@@ -16,6 +16,7 @@ class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     @IBOutlet weak var tweetsTableView: UITableView!
     var tweets: [Tweet]!
+    var profileViewNumber:Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         tweetsTableView.dataSource = self
@@ -36,6 +37,11 @@ class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDa
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.insertTweet(_notification:)), name: NSNotification.Name(rawValue: "UserTweeted"), object: nil)
         // Do any additional setup after loading the view.
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+//        tap.delegate = self
+//        tap.numberOfTapsRequired = 1
+//        tap.numberOfTouchesRequired = 1
+//        self.tweetsTableView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +50,7 @@ class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func insertTweet(_notification: NSNotification){
-        print(_notification.userInfo?["tweetResponse"])
+        //print(_notification.userInfo?["tweetResponse"])
         if let insertTweetinTable = _notification.userInfo?["tweetResponse"] as? NSDictionary
         {
             self.tweets.insert(Tweet(dictionary: insertTweetinTable), at: 0)
@@ -62,6 +68,8 @@ class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tweetsTableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.tweet = tweets[indexPath.row]
+        cell.rowNum = indexPath.row
+        cell.delegate = self
         return cell
     }
     
@@ -75,7 +83,30 @@ class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
     
+//    func onTap(_ sender: UITapGestureRecognizer) {
+//        if sender.state == UIGestureRecognizerState.ended {
+//            var tableView = sender.view as! UITableView
+//            var point = sender.location(in: tableView)
+//            var indexPath = tableView.indexPathForRow(at: point)
+//            var cell = tableView.cellForRow(at: indexPath!) as! CustomCell
+//            
+//            // get associated tweet
+//            var thisTweet = self.tweets[indexPath!.row]
+//            var pointInCell = sender.location(in: cell)
+//            if(cell.profileImage.frame).contains(pointInCell){
+//            self.performSegue(withIdentifier: "tapImageProfileTimeline", sender: cell.profileImage)
+//            }
+//        }
+//    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "tapImageProfileTimeline"{
+            let profilenavigationController = segue.destination as! UINavigationController
+            let profileViewController = profilenavigationController.topViewController as! ProfileViewController
+            profileViewController.userTweet = self.tweets[profileViewNumber]
+        }
+        
         if sender is UITableViewCell{
             let cell = sender! as! UITableViewCell
             let indexPath = tweetsTableView.indexPath(for: cell)
@@ -90,6 +121,11 @@ class MainTweetsController: UIViewController, UITableViewDelegate, UITableViewDa
         if let index = self.tweetsTableView.indexPathForSelectedRow{
             self.tweetsTableView.deselectRow(at: index, animated: true)
         }
+    }
+    
+    func CustomCellDelegate(number: Int) {
+        self.profileViewNumber = number
+        self.performSegue(withIdentifier: "tapImageProfileTimeline", sender:nil)
     }
     
 
