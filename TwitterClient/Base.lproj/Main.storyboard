@@ -850,7 +850,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="A6i-EW-Wd6">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Mec-Gm-ISC">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Mec-Gm-ISC">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onCancel:" destination="0hG-1p-9XR" id="Wl4-QK-7tU"/>
                             </connections>
@@ -982,9 +983,13 @@
             <objects>
                 <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="RmD-DA-W0b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cvc-O4-0Q9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Cvc-O4-0Q9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.29712780329999999" green="0.72694843819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1000,9 +1005,13 @@
             <objects>
                 <navigationController storyboardIdentifier="MentionsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="I55-C3-OAa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6hO-w6-Dzh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6hO-w6-Dzh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.29712780329999999" green="0.72694843819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1021,6 +1030,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qOP-lE-6Ak"/>
-        <segue reference="Egd-Sa-h8F"/>
+        <segue reference="gPp-po-WIZ"/>
     </inferredMetricsTieBreakers>
 </document>
