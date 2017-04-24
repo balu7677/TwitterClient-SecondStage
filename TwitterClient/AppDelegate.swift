@@ -22,13 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let viewControl = storyBoard.instantiateViewController(withIdentifier: "MainTweetsNavigationController")
 //            
 //            window?.rootViewController = viewControl
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let viewControl = storyBoard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
-            window?.rootViewController = viewControl
-            let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-            menuViewController.hamburgerViewController = viewControl
-            viewControl.menuViewController = menuViewController
-
+            
+            routeToHamburger()
             
         }
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserLoggedOut"), object: nil, queue: OperationQueue.main) { (Notification) in
@@ -40,6 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    func routeToHamburger() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let viewControl = storyBoard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+        window?.rootViewController = viewControl
+        let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menuViewController.hamburgerViewController = viewControl
+        viewControl.menuViewController = menuViewController
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

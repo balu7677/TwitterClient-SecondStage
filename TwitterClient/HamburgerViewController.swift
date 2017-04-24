@@ -41,10 +41,10 @@ class HamburgerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("In Hamburger")
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menuViewController.hamburgerViewController = self
-        self.menuViewController = menuViewController
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+//        menuViewController.hamburgerViewController = self
+//        self.menuViewController = menuViewController
 
         // Do any additional setup after loading the view.
     }
