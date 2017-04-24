@@ -112,14 +112,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ProfileHomeBtnToHamB"{
-//            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//            let hamburgerNaviController = segue.destination as! UINavigationController
-//            let hamburgerViewController = hamburgerNaviController.topViewController as! HamburgerViewController
-//            let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-//            menuViewController.hamburgerViewController = hamburgerViewController
-//            hamburgerViewController.menuViewController = menuViewController
-        }
         if sender is UITableViewCell{
             let cell = sender! as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
@@ -129,7 +121,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             detailViewController.tweet = tweet
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
 
+    @IBAction func onCancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation

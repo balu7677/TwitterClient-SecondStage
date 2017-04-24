@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            
 //            window?.rootViewController = viewControl
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let navigationControl = storyBoard.instantiateViewController(withIdentifier: "HamburgerNavigationController") as! UINavigationController
-            let viewControl = navigationControl.topViewController as! HamburgerViewController
+            let viewControl = storyBoard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
             window?.rootViewController = viewControl
             let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             menuViewController.hamburgerViewController = viewControl
@@ -39,11 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = viewControl
             
         }
-//        let hamburgerViewController = self.window?.rootViewController as! HamburgerViewController
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-//        menuViewController.hamburgerViewController = hamburgerViewController
-//        hamburgerViewController.menuViewController = menuViewController
         
         return true
     }

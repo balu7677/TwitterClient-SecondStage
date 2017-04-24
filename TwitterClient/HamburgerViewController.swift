@@ -42,8 +42,6 @@ class HamburgerViewController: UIViewController {
         super.viewDidLoad()
         print("In Hamburger")
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let navigationControl = storyBoard.instantiateViewController(withIdentifier: "HamburgerNavigationController") as! UINavigationController
-//        //let viewControl = navigationControl.topViewController as! HamburgerViewController
         let menuViewController = storyBoard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menuViewController.hamburgerViewController = self
         self.menuViewController = menuViewController

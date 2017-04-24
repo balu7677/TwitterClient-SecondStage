@@ -43,6 +43,18 @@ class TwitterAPIClient: BDBOAuth1SessionManager {
             failure(error)
         })
     }
+    
+    func mentionsTimeLine(success:@escaping ([Tweet])->(), failure:@escaping (Error)->()){
+        get("https://api.twitter.com/1.1/statuses/mentions_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            let dictionaries = response as! [NSDictionary]
+            let tweets = Tweet.tweetsArray(dictionaries: response as! [NSDictionary])
+            success(tweets)
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            print(error.localizedDescription)
+            failure(error)
+        })
+
+    }
 
     
     func verifyCredentials(success:@escaping ((User)->()), failure:@escaping ((Error)->())){
